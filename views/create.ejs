@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SastaOLX</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+        <script>
+            const phones = {id:1,items:["Mobile Phones", "Accessories", "Tablets"]};
+            const jobs = {id:2,items:[
+                "Data entry & Back office",
+                "Sales & Marketing",
+                "BPO & Telecaller",
+                "Driver",
+                "Office Assistant",
+                "Delivery & Collection",
+                "Teacher",
+                "Cook",
+                "Receptionist & Front office",
+                "Operator & Technician",
+                "IT Engineer & Developer",
+                "Hotel & Travel Executive",
+                "Accountant",
+                "Designer",
+                "Other Jobs",
+            ]};
+            const bikes = {id:3,items:[
+                "Motorcycles",
+                "Scooters",
+                "Spare Parts",
+                "Bicycles",
+            ]};
+            const electronics = {id:4,items:[
+                "TVs, Video - Audio",
+                "Kitchen & Other Appliances",
+                "Computers & Laptops",
+                "Cameras & Lenses",
+                "Games & Entertainment",
+                "Fridges",
+                "Computer Accessories",
+                "Hard Disks, Printers & Monitors",
+                "ACs",
+                "Washing Machines",
+            ]};
+            const comm = {id:5,items:["Commercial & Other Vehicles", "Spare Parts"]};
+            const furnitures = {id:6,items:[
+                "Sofa & Dining",
+                "Beds & Wardrobes",
+                "Home Decor & Garden",
+                "Kids Furniture",
+                "Other Household Items",
+            ]};
+            const fashion = {id:7,items:["Men", "Women", "Kids"]};
+            const books = {id:8,items:[
+                "Books",
+                "Gym & Fitness",
+                "Musical Instruments",
+                "Sports Equipment",
+                "Other Hobbies",
+            ]};
+            const pets = {id:9,items:[
+                "Fishes & Aquarium",
+                "Pet Food & Accessories",
+                "Dogs",
+                "Other Pets",
+            ]};
+            const services = {id:10,items:[
+                "Electronics & Computer",
+                "Education & Classes",
+                "Drivers & Taxi",
+                "Health & Beauty",
+                "Other Services",
+            ]};
+            const allCategories = [phones,jobs,bikes,electronics,comm,furnitures,fashion,books,pets,services];
+
+            const secondaryCategoryChange  = (id) => {
+
+            }
+            const handleCategoryChange = (id) => {
+                
+                // Testing for edgecases
+
+                if (id < 1 || id > 10) {
+                    return;
+                }
+                // Done Testing for Edgecases
+
+
+                // Clear Previous Options
+
+                
+
+                const subForm = document.querySelector('#subForm');
+                
+                subForm.innerHTML = '';
+                const o = document.createElement('option');
+                o.setAttribute('selected',true)
+                o.innerText = "Sub Categories";
+                subForm.appendChild(o);
+                // Done Erasing InnerHTML and Added Default Option
+
+                const cateGy = allCategories.find(e => e.id == id);
+                console.log(cateGy);
+                const items = cateGy.items;
+                for ( let x = 0 ; x < items.length ; x++){
+                    const p = document.createElement('option');
+                    p.innerHTML = items[x];
+                    p.value = x;
+                    subForm.appendChild(p);
+                }
+            }
+        </script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        />
+    </head>
+    <body>
+        <div class="container-fluid px-0">
+            
+            <%- include ('partials/nav.ejs') %>
+        </div>
+
+        <!-- Create Ad Section -->
+
+        <div class="container-xl">
+            <div class="row p-3 my-4">
+                <div class="col-8">
+                    <p class="h2 fw-light">
+                        Post An Ad
+                    </p>
+                    <div class="form my-4">
+                        <div class="form-row my-3">
+                            <div class="form-group col-md-6">
+                                <label for="title" class="mb-2">Title</label>
+                                <input type="text" class="form-control" id="title" placeholder="Apple MAC">
+                            </div>
+                        </div>
+                        <div class="form-row my-3">
+                            <div class="form-group col-md-12">
+                                <label for="description" class="mb-2">Description</label>
+                                <textarea type="text" class="form-control" id="description" rows="3" placeholder="A Used Apple MAC"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row my-4">
+                            <div class="form-group col-6">
+                                <select
+                                        class="form-select form-select-sm mb-3"
+                                        aria-label=".form-select-lg example"
+                                        onchange="handleCategoryChange(this.value)"
+                                    >
+                                        <option selected>Categories</option>
+                                        <option value="1">Mobiles</option>
+                                        <option value="2">Jobs</option>
+                                        <option value="3">Bikes</option>
+                                        <option value="4">
+                                            Electronics & Applications
+                                        </option>
+                                        <option value="5">
+                                            Commercial Vehicles and Spares
+                                        </option>
+            
+                                        <option value="6">Furniture</option>
+            
+                                        <option value="7">Fashion</option>
+            
+                                        <option value="8">Books, Sports & Hobbies</option>
+            
+                                        <option value="9">Pets</option>
+            
+                                        <option value="10">Services</option>
+                                    </select>
+                            </div>
+                            <div class="form-group col-6">
+                                
+                                <select
+                                class="form-select form-select-sm mb-3"
+                                aria-label=".form-select-lg example"
+                                id="subForm"
+                            >
+                                <option selected>Sub Categories</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div
+                            class="card shadow-sm p-0 mb-5 bg-white rounded mx-2"
+                        >
+                            <img
+                                class="card-img-top"
+                                src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXBwbGUlMjBsYXB0b3B8ZW58MHx8MHx8&w=1000&q=80"
+                                alt="Card image cap"
+                            />
+                            <div class="card-body">
+                                <h5 class="card-title">Apple Macbook 2019</h5>
+                                <p class="card-text" style="font-size: 0.9rem">
+                                    MacBook Pro with powerful Apple M1 chips,
+                                    available in 13-inch or all-new 14-inch and
+                                    16-inch models
+                                </p>
+                                <a href="#" class="btn btn-primary"
+                                    >&nbsp; &nbsp;View&nbsp;&nbsp;
+                                </a>
+                                <a href="#" class="btn btn-outline-primary"
+                                    >Watchlist</a
+                                >
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Ad Section -->
+            <%- include ('partials/footer.ejs') %> 
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        ></script>
+    </body>
+</html>

@@ -26,6 +26,15 @@ app.get('/create',(req,res) => {
 app.get('/account',(req,res) => {
     res.render('account',{page:'account'})
 })
+app.get('/auth',(req,res) => {
+    res.render('auth',{page:'auth'})
+})
+
+// Apis
+
+app.post('/create',(req,res) => {
+
+})
 
 app.listen(5000,() => {
     console.log('Listening on PORT 5000')

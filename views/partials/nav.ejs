@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light px-4 bg-light">
+    <div class="container-xl px-4">
+        <a class="navbar-brand" href="#">SastaOLX</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNavDropdown"
+        >
+            <ul class="navbar-nav">
+                <% if (page == 'index') { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" style="color:black !important; ">Home</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                <% } %>
+                <% if (page == 'products') { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products" style="color:black !important; ">Products</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/products">Products</a>
+                    </li>
+                <% } %>
+                <% if (page == 'create') { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/create" style="color:black !important; ">Post An Ad</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/create">Post An Ad</a>
+                    </li>
+                <% } %>
+                <% if (page == 'account') { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account" style="color:black !important; ">Your Account</a>
+                    </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account">Your Account</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
